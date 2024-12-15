@@ -33,7 +33,7 @@ header p {
     gap: 2rem;
 }
 
-@media (max-width: 580px){
+@media (max-width: 680px){
     .container {
     max-width: 100%;
     margin: 2rem auto;
