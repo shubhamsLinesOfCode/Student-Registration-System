@@ -93,12 +93,12 @@ th {
     overflow-y: auto;
 }
 
-@media (max-width: 680px){
+@media (max-width: 720px){
     .container {
     max-width: 100%;
     margin: 2rem auto;
     padding: 1rem;
-    background-color: transparent;
+    background-color: red;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
