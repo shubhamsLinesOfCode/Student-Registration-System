@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple and efficient Student Registration System allowing students to register, edit, and manage their details."
+    />
+    <link
+      rel="shortcut icon"
+      href="/images&icons/registration.png"
+      type="image/x-icon"
+    />
+    <title>Student Registration System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Student Registration System</h1>
+      <p>Register, edit, and manage student records efficiently.</p>
+    </header>
+
+    <div class="container">
+      <form id="registrationForm">
+        <label for="studentName">Student Name:</label>
+        <input
+          type="text"
+          id="studentName"
+          name="studentName"
+          placeholder="Enter student's name"
+          required
+        />
+
+        <label for="studentID">Student ID:</label>
+        <input
+          type="text"
+          id="studentID"
+          name="studentID"
+          placeholder="Enter student's ID"
+          required
+        />
+
+        <label for="email">Email ID:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter email address"
+          required
+        />
+
+        <label for="contactNumber">Contact Number:</label>
+        <input
+          type="text"
+          id="contactNumber"
+          name="contactNumber"
+          placeholder="Enter contact number"
+          required
+        />
+
+        <button type="button" id="addStudent">Add Student</button>
+      </form>
+
+      <div class="display-section">
+        <h2>Registered Students</h2>
+        <div class="scrollable">
+          <table id="studentsTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Email</th>
+                <th>Contact No.</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Student records will be dynamically added here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Placeholder for JavaScript functionality to be implemented
+      // (e.g., adding, editing, deleting student records, and managing local storage)
+    </script>
+  </body>
+</html>
