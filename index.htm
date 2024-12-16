@@ -12,16 +12,24 @@
       href="https://imgur.com/XZEzQSn"
       type="image/x-icon"
     />
-    <title>Student Registration System</title>
+    <link href="./output_styles.css" rel="stylesheet" />
+    <title>Registration Form</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
-      <h1>Student Registration System</h1>
+      <h1>Students' Registration Hub</h1>
       <p>Register, edit, and manage student records</p>
     </header>
 
     <div class="container">
+      <video autoplay muted loop playsinline class="background-video">
+        <source
+          src="./images&icons/8143237-hd_2048_1080_24fps.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
       <form id="registrationForm">
         <label for="studentName">Student Name:</label>
         <input
@@ -58,7 +66,6 @@
           placeholder="Enter contact number"
           required
         />
-
         <button type="button" id="addStudent">Add Student</button>
       </form>
 
@@ -83,7 +90,7 @@
       </div>
     </div>
 
-    <script>
+    <script type="text/javascript" src="./script.js">
       // Placeholder for JavaScript functionality to be implemented
       // (e.g., adding, editing, deleting student records, and managing local storage)
     </script>
