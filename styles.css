@@ -93,8 +93,13 @@ td {
 }
 
 th {
-  /* background-color: #f2f2f2; */
-}
+  position: sticky;
+   /* Make the header sticky */
+  top: 0; /* Position it at the top of the container */
+   background-color: #f1f1f1; /* Background color for the header */
+   z-index: 10; /* Ensure the header is above the rows */
+/*   background-color: #f2f2f2; 
+ */}
 
 .background-video {
   position: absolute;
@@ -123,4 +128,11 @@ th {
     border-radius: 8px;
     overflow: hidden;
   }
+}
+
+h2{
+  font-size: larger;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    text-align: center;
 }

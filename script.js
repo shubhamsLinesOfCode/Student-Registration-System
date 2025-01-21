@@ -45,7 +45,7 @@ function renderStudents() {
 function validateInputs(name, id, email, contact) {
   const nameRegex = /^[a-zA-Z\s]+$/;
   const idRegex = /^[0-9]+$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{3,}$/;
   const contactRegex = /^[0-9]+$/;
 
   if (!name || !id || !email || !contact) {
@@ -68,24 +68,12 @@ function validateInputs(name, id, email, contact) {
     alert("Contact number must contain only numbers.");
     return false;
   }
+  if (contact.length < 10) {
+    alert("Contact number can't be less than a 10-digit number");
+    return false;
+  }
   return true;
 }
-
-// Add student record
-addStudentButton.addEventListener("click", () => {
-  const name = registrationForm.studentName.value.trim();
-  const id = registrationForm.studentID.value.trim();
-  const email = registrationForm.email.value.trim();
-  const contact = registrationForm.contactNumber.value.trim();
-
-  if (!validateInputs(name, id, email, contact)) return;
-
-  const students = getStudents();
-  students.push({ name, id, email, contact });
-  saveStudents(students);
-  renderStudents();
-  registrationForm.reset(); // Clear the form
-});
 
 // Edit or Delete student record
 studentsTableBody.addEventListener("click", (e) => {
@@ -103,34 +91,63 @@ studentsTableBody.addEventListener("click", (e) => {
 
     // Update record on re-submission
     addStudentButton.textContent = "Update Student";
-    addStudentButton.onclick = () => {
-      if (
-        !validateInputs(
-          registrationForm.studentName.value.trim(),
-          registrationForm.studentID.value.trim(),
-          registrationForm.email.value.trim(),
-          registrationForm.contactNumber.value.trim()
-        )
-      )
-        return;
 
-      students[index] = {
-        name: registrationForm.studentName.value.trim(),
-        id: registrationForm.studentID.value.trim(),
-        email: registrationForm.email.value.trim(),
-        contact: registrationForm.contactNumber.value.trim(),
-      };
-      saveStudents(students);
-      renderStudents();
-      registrationForm.reset();
-      addStudentButton.textContent = "Add Student";
-    };
+    // Store the index for updating
+    addStudentButton.dataset.index = index; // Store index in button's dataset
   } else if (target.classList.contains("delete")) {
     // Delete functionality
     students.splice(index, 1);
     saveStudents(students);
     renderStudents();
   }
+});
+
+//This function to ensure that the contact no. the id and the email address remain unique always
+function checkUniqueness(students, newStudent) {
+  if (students.some((student) => student.email === newStudent.email)) {
+    return "Email address is already registered";
+  }
+  if (students.some((student) => student.id === newStudent.id)) {
+    return "A student with this particular ID is already registered";
+  }
+  if (students.some((student) => student.contact === newStudent.contact)) {
+    return "This contact number is already associated with a student";
+  }
+  return null; // All fields are unique
+}
+
+// Update student record when button is clicked
+addStudentButton.addEventListener("click", () => {
+  const index = addStudentButton.dataset.index; // Get the stored index
+  const name = registrationForm.studentName.value.trim();
+  const id = registrationForm.studentID.value.trim();
+  const email = registrationForm.email.value.trim();
+  const contact = registrationForm.contactNumber.value.trim();
+
+  if (!validateInputs(name, id, email, contact)) return;
+
+  const students = getStudents();
+  const newStudent = { name, id, email, contact };
+
+  const uniquenessMessage = checkUniqueness(students, newStudent);
+  if (uniquenessMessage) {
+    alert(uniquenessMessage);
+    return;
+  }
+
+  if (index !== undefined) {
+    // Update existing student
+    students[index] = newStudent;
+  } else {
+    // Add new student
+    students.push(newStudent);
+  }
+
+  saveStudents(students);
+  renderStudents();
+  registrationForm.reset();
+  addStudentButton.textContent = "Add Student";
+  delete addStudentButton.dataset.index; // Clear the index after updating
 });
 
 // Initial render
