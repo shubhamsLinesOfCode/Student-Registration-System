@@ -21,12 +21,17 @@ This Student Registration System is a web application that allows users to regis
 ## Installation
 
 1. Clone the repository:
-   ```git clone https://github.com/yourusername/student-registration-system.git
+
+   ```git clone https://shubhamslinesofcode.github.io/student-registration-system/
 
    ```
+
 2. Navigate to the project directory:
+
    ```cd student-registration-system
+
    ```
+
 3. Open `index.html` in your web browser to view the application.
 
 ## Usage
@@ -34,7 +39,7 @@ This Student Registration System is a web application that allows users to regis
 - Fill out the registration form with the student's details.
 - Click the "Add Student" button to register the student.
 - The student will appear in the table below.
-- Click "Edit" to modify a student's information or "Delete" to remove a student from the list.
+- Click "Edit" to Update a student's information or "Delete" to remove a student from the list.
 
 ## Contribution
 
